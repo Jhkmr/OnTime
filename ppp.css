@@ -20,17 +20,17 @@
 
 @font-face {
     font-family: "Office Times Sharp Mono";
-    src: url("../CriticalPublishing_Time/fonts/OfficeTimesSharp-RegularMono.woff");
+    src: url("/CriticalPublishing_Time/fonts/OfficeTimesSharp-RegularMono.woff");
 }
 
 @font-face {
     font-family: "Office Times Sharp";
-    src: url("../CriticalPublishing_Time/fonts/OfficeTimesSharp-Regular.woff");
+    src: url("/CriticalPublishing_Time/fonts/OfficeTimesSharp-Regular.woff");
 }
 
 @font-face {
     font-family: "Gravity";
-    src: url("../CriticalPublishing_Time/fonts/ABCGravity-Condensed.woff");
+    src: url("/CriticalPublishing_Time/fonts/ABCGravity-Condensed.woff");
 }
 
 /*--------- GENERAL STYLE -------*/
