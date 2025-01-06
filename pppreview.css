@@ -1,0 +1,61 @@
+/* PRINT PREVIEW IN THE BROWSER */
+@media screen{
+	body{
+		width: 100%;
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		background: black;
+	}
+
+	/* Page settings */
+	.ink{
+		z-index: 1;
+		width: var(--page-width);
+		height: var(--page-height);
+		padding: var(--page-margin);
+		page-break-after: always;
+		background: white;
+	}
+	
+	.riso1{
+		z-index: 2;
+		width: var(--page-width);
+		height: var(--page-height);
+		page-break-after: always;
+		position: relative;
+		background: none;
+		margin-top: -21.5cm;
+		
+	}
+	
+
+	.riso2{
+		z-index: 3;
+		width: var(--page-width);
+		height: var(--page-height);
+		position: relative;
+		background: none;
+		margin-top: -21cm;
+	}
+
+	/* Display HTML element with the .print class */
+	.print{
+		display: block;
+	}
+
+	/* Doesn't display HTML element with the .screen class */
+	.screen{
+		display: none;
+	}
+
+	#graphic {
+		filter: url(#noiseScreen);
+	}
+	
+	#graphic2 {
+		filter: url(#noiseScreen);
+	}
+
+
+}

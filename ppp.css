@@ -1,0 +1,396 @@
+/* PrePostPrint CSS Print framework */
+
+/*-------------- VARIABLES ---------*/
+/*EN — Change variable of the page width, page height, width and footer position*/
+:root {
+	/* Page width */
+	--page-width: 14.8cm;
+	/* Page height */
+	--page-height: 21cm;
+	/* Page margins */
+	--page-margin: 0.5cm;
+	/* Page counter position */
+	--page-footer-bottom: 0cm;
+	--page-footer-margin: 0cm;
+	--page-header-top: 0.5cm;
+	--page-header-margin: 0.5cm;
+
+	--play-state: running;
+}
+
+@font-face {
+    font-family: "Office Times Sharp Mono";
+    src: url("../fonts/OfficeTimesSharp-RegularMono.woff");
+}
+
+@font-face {
+    font-family: "Office Times Sharp";
+    src: url("../fonts/OfficeTimesSharp-Regular.woff");
+}
+
+@font-face {
+    font-family: "Gravity";
+    src: url("../fonts/ABCGravity-Condensed.woff");
+}
+
+/*--------- GENERAL STYLE -------*/
+
+body {
+	margin: 0.5cm;
+}
+
+section {
+	user-select: none;
+}
+
+/*--------- GRID -------*/
+
+.wrapper{
+	display:grid;
+	height: 100%;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+	grid-gap:5px;
+	overflow: hidden;
+}
+.DisplacementWrapper{
+	height: 100%;
+}
+
+/*--------- RISO LAYERS -------*/
+
+#risoBox1{
+
+	background-color:none;
+	height: 9cm;
+	mix-blend-mode: multiply;
+}
+
+#risoBox2{
+
+	background-color:none;
+	height: 9cm;
+}
+
+/*--------- SVG FILTERS -------*/
+
+
+#noiseScreen {
+	visibility: hidden;
+}
+
+#noisePrint {
+	visibility: hidden;
+}
+
+
+#today {
+	filter: url(#distort);
+  }
+
+  
+#maskedtext {
+	filter: url(#blur);
+  }
+  
+  
+#filter {
+	position: absolute;
+  }
+
+
+/*--------- TYPE -------*/
+h1 {
+	font-family: 'Gravity';
+	font-size: 12.5pt;
+	text-align: end;
+	line-height:12px;
+	margin: 0px;
+	white-space: pre-wrap;
+}
+
+p {
+	font-family: 'Office Times Sharp';
+	font-size: 10pt;
+	letter-spacing: 0.2pt;
+	text-align: end;
+	line-height:10px;
+	margin: 0px;
+	white-space: pre-wrap;
+}
+
+.startPage {
+	line-height:19px;
+	margin-top:-2px;
+}
+
+.endSentence {
+	text-align: start;
+	line-height:14px;
+	margin-top:0px;
+
+}
+
+.endWord {
+	text-align: start;
+	line-height:6px;
+	margin-top:0px;
+
+}
+
+.startSentence {
+	text-align: start;
+	line-height:19px;
+	margin-top:-4px;
+
+}
+
+.timeTL{
+	grid-column:1;
+	grid-row:1;
+	rotate: -90deg;
+	margin-right:10px;
+}
+
+.timeT1{
+	grid-column:1;
+	grid-row:1;
+	margin: 0;
+	margin-top:15px;
+	padding-left: 40px;
+}
+
+.timeT2{
+	grid-column:3;
+	grid-row:1;
+	margin: 0;
+	margin-top: 1px;
+}
+
+.timeTR{
+	grid-column:4;
+	grid-row:1;
+	rotate: 0deg;
+	margin-top: 1px;
+}
+
+.timeR1{
+	grid-column:4;
+	grid-row:4;
+	rotate: 90deg;
+	margin-top:5px;
+	margin-left:15px;
+}
+
+.timeBR{
+	grid-column:4;
+	grid-row:6;
+	rotate: 90deg;
+	margin-left: 6px;
+	padding-right: 9px;
+}
+.timeB1{
+	grid-column:4;
+	grid-row:6;
+	rotate: 180deg;
+	padding-left: 12px;
+}
+
+.timeB2{
+	grid-column:2;
+	grid-row:6;
+	margin: 0;
+	rotate: 180deg;
+
+}
+
+.timeBL{
+	grid-column:1;
+	grid-row:6;
+	rotate: 180deg;
+}
+
+.timeL1{
+	grid-column:1;
+	grid-row:3;
+	rotate: -90deg;
+	margin-top:-10px;
+}
+
+
+/*--------- ANIMATION -------*/
+
+.marquee1 {
+    height: 21cm;
+    background-color: none;
+	margin-top: -12cm;
+	filter: url(#distortLayer);
+}
+
+.marquee1 div {
+    display: block;
+    width: 200%;
+    position: relative; 
+    animation: marquee1 12s linear infinite;
+	animation-play-state: var(--play-state);
+	margin-bottom: 2cm;
+}
+
+.marquee2 {
+    height: 100%;
+    background-color: none;
+	margin-top: -21cm;
+	position: relative;
+	filter: url(#distortLayer2);
+}
+
+.marquee2 div {
+    display: block;
+    width: 220%;
+    position: relative; 
+    animation: marquee2 30s linear infinite;
+	animation-play-state: var(--play-state);
+	margin-bottom: 2cm;
+}
+
+.marquee3 {
+    height: 100%;
+    background-color: none;
+	margin-top: -21cm;
+	position: relative;
+	filter: url(#distortLayer3);
+}
+
+.marquee3 div {
+    display: block;
+    width: 240%;
+    position: relative; 
+    animation: marquee3 12s linear infinite;
+	animation-play-state: var(--play-state);
+	margin-bottom: 2cm;
+}
+
+
+span {
+    float: left;
+	width: 50%;
+	text-wrap: nowrap;
+	white-space: pre-wrap;
+
+	font-size: 24pt;
+	line-height: 24pt;
+    color: black;
+    font-family: 'Office Times Sharp Mono';
+	text-align: left;
+}
+
+
+
+@keyframes marquee1 {
+    0% { left: 20%; }
+    100% { left: -80%; }
+}
+	
+@keyframes marquee2{
+    0% { left: 0; }
+    100% { left: -110%; }
+}
+
+@keyframes marquee3{
+    0% { left: 5%; }
+    100% { left: -115%; }
+}
+
+
+button {
+	z-index: 4;
+	position: absolute;
+	margin-left: 20cm;
+}
+
+
+/* Add .print class to display html elements only for the print */
+.print {
+	display: none;
+}
+
+/* Add .screen class to display html elements only for the print */
+.screen {
+	display: block;
+}
+
+.center {
+	text-align: center;
+	margin: auto;
+}
+
+.center-top {
+	margin-top: 50vh;
+	transform: translateY(-100%);
+}
+
+/*--------- PRINT STYLE -------*/
+
+@media print {
+
+	@page {
+		size: A5;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+
+
+	/* Page settings */
+	.riso1 {
+		width: calc(var(--page-width) + 1);
+		height: calc(calc(var(--page-height) + var(--page-margin)) - 1mm);
+		padding: var(--page-margin);
+		page-break-after: always;
+		position: relative;
+	}
+
+	.riso2 {
+		width: calc(var(--page-width) + 1);
+		height: calc(calc(var(--page-height) + var(--page-margin)) - 1mm);
+		padding: var(--page-margin);
+		position: relative;
+	}
+
+	.ink {
+		width: var(--page-width);
+		height: calc(calc(var(--page-height) + var(--page-margin)) - 1mm);
+		padding: var(--page-margin);
+		page-break-after: always;
+		position: relative;
+		overflow: hidden;
+	}
+
+
+	/* Display HTML element with the .print class */
+	.print {
+		display: block;
+	}
+
+	/* Doesn't display HTML element with the .screen class */
+	.screen {
+		display: none;
+	}
+
+	#graphic {
+		filter: url(#noisePrint);
+	}
+	
+	#graphic2 {
+		filter: url(#noisePrint);
+	}
+
+	#animationToggle {
+		display: none;
+	}
+
+}

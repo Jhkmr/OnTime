@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>On Time</title>
+
+	<link rel="stylesheet" href="ppp.css">
+	<link rel="stylesheet" href="pppreview.css">
+
+	<script src="suncalc.js"></script>
+
+</head>
+
+<body>
+
+	<button id="animationToggle" type="button">Pause</button>
+
+<!-- SVG FILTERS -->
+
+	<svg id="filter">
+		<defs>
+		  <filter id="distort">
+			<feTurbulence id="turbulence" baseFrequency="0.005" numOctaves="1" seed="1" result="noise">
+			</feTurbulence>
+			<feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" >
+			</feDisplacementMap>
+			<feMorphology operator="dilate" radius="15"/>
+		  </filter>
+		<filter id="distortBox">
+			<feTurbulence id="turbulence" baseFrequency="0.008" numOctaves="1" seed="1" result="noise">
+			</feTurbulence>
+			<feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" >
+			</feDisplacementMap>
+		</filter>
+		<filter id="blur" x="0" y="0">
+			<feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+		  </filter>
+		  <filter id="noiseScreen">
+			<feTurbulence id="turbulence" type="fractalNoise" baseFrequency="3" numOctaves="10" stitchTiles="stitch" result="turbulence" />
+			<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="500" xChannelSelector="B" yChannelSelector="G" result="displacement"/> 
+			<feComposite operator="in" in="displacement" in2="SourceAlpha" result="composite"/>
+			<feColorMatrix in="composite" type="luminanceToAlpha" result="alpha"/>
+			<feBlend in="alpha" in2="composite" mode="multiply"/>
+			<feComposite operator="out" in="SourceGraphic" in2="monoNoise"/>
+		  </filter>
+		  <filter id="noisePrint">
+			<feTurbulence id="turbulence" type="fractalNoise" baseFrequency="2" numOctaves="10" stitchTiles="stitch" result="turbulence" />
+			<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="500" xChannelSelector="B" yChannelSelector="G" result="displacement"/> 
+			<feComposite operator="in" in="displacement" in2="SourceAlpha" result="composite"/>
+			<feColorMatrix in="composite" type="luminanceToAlpha" result="alpha"/>
+			<feBlend in="alpha" in2="composite" mode="multiply"/>
+			<feComposite operator="out" in="SourceGraphic" in2="monoNoise"/>
+			
+		  </filter>		  
+		</defs>
+	  </svg>
+
+<!-- MAIN LAYOUT (Printed with regular printer) -->
+	  
+	  <section class="ink">
+		<div class="wrapper">
+	
+			<div class="timeTL">
+				<p class="startPage">Time</p>
+			</div>
+
+			<div class="timeT1">
+				<p class="endSentence">left</p>
+				<p class="endSentence">   goes on</p>
+			</div>
+
+			<div class="timeT2">
+				<h1 class="startSentence">On</h1>
+				<p class="startSentence">   In</p>
+				<p class="startSentence">      About</p>
+			</div>
+	
+			<div class="timeTR">
+				<h1>Time</h1>
+			</div>
+
+			<div class="timeR1">
+				<p class="startSentence">Sign of the</p>
+				<p class="startSentence">   Product of our</p>
+				<p class="startSentence">      Sense of</p>
+			</div>
+	
+			<div class="timeBR">
+				<p>Time</p>
+			</div>
+
+			<div class="timeB1">
+				<p class="endWord">s</p>
+			</div>
+
+			<div class="timeB2">
+				<p class="startSentence">What is the</p>
+				<p class="startSentence">   Look at the</p>
+			</div>
+	
+			<div class="timeBL">
+				<p>Time</p>
+			</div>
+
+			<div class="timeL1">
+				<p class="startSentence">No</p>
+				<p class="startSentence">   As</p>
+				<p class="startSentence">      Out of</p>
+			</div>
+			
+			
+			<svg viewBox="0 0 138 200" xmlns="http://www.w3.org/2000/svg" class="path">
+				<filter id="distortLayer">
+					<feTurbulence id="noiseLines1"  baseFrequency="0.005" numOctaves="2" seed="1" stitchTiles="noStitch" result="noise">
+					</feTurbulence>
+					<feDisplacementMap id="displacement1" in="SourceGraphic" in2="noise" scale="100" xChannelSelector="R" >
+					</feDisplacementMap>
+				  </filter>
+				  <filter id="distortLayer2">
+					<feTurbulence id="noiseLines2"  baseFrequency="0.005" numOctaves="2" seed="9" stitchTiles="noStitch" result="noise">
+					</feTurbulence>
+					<feDisplacementMap id="displacement2" in="SourceGraphic" in2="noise" scale="150" xChannelSelector="R" >
+					</feDisplacementMap>
+				  </filter>
+				  <filter id="distortLayer3">
+					<feTurbulence id="noiseLines3"  baseFrequency="0.005" numOctaves="2" seed="5" stitchTiles="noStitch" result="noise">
+					</feTurbulence>
+					<feDisplacementMap id="displacement3" in="SourceGraphic" in2="noise" scale="150" xChannelSelector="R" >
+					</feDisplacementMap>
+				  </filter>
+
+			  </svg>			  
+	
+		</div>
+
+		<div class="DisplacementWrapper">
+		<div class="marquee1">
+			<div class="span1">
+			  <span>Down the rabbithole</span>
+			  <span>Down the rabbithole</span>
+			</div>
+		</div>
+
+		<div class="marquee2">
+			<div class="span2">
+			  <span>page by page by page by page by</span>
+			  <span>page by page by page by page by</span>
+			</div>
+		</div>
+
+		<div class="marquee3">
+			<div class="span3">
+			  <span>     scrolling through</span>
+			  <span>     scrolling through</span>
+			</div>
+
+			<div class="span3">
+				<span>an endless void</span>
+				<span>an endless void</span>
+			  </div>
+		</div>
+		  
+		</div>
+	</section>
+
+<!-- COLOR GRADIENT LAYERS (Printed with Riso) -->
+
+	<section class="riso1">
+		<div class="wrapper">
+
+		    <div id= "risoBox1" class="risoBox1">
+				
+				  <svg id="graphic" viewBox="-2.5 -2.5 300 199">
+					<defs>
+					  
+					  <radialGradient id="gradient1" cx="30%" cy="30%" r="100%" fx="0%" fy="100%">
+						<stop id ="gradientColor1" offset="0%" style="stop-color:#efda3c; stop-opacity:0" />
+						<stop offset="100%" style="stop-color:white; stop-opacity:0" />
+					  </radialGradient>
+					  <mask id="maskedtext">
+						<rect id="inner" width="100%" height="100%" x="0" y="0" rx="15" filter="url(#blur)" fill="white"/>
+						<text id="today" x="48%" y="83%" text-anchor="middle" font-weight="bolder" font-size="230">
+						
+						</text>
+					  </mask>
+					</defs>
+					<!-- Shape -->
+					<rect width="100%" height="100%" x="0" y="0" rx="15" fill="url(#gradient1)"  mask="url(#maskedtext)" filter="url(#blur)"/>
+				  </svg>
+		    </div>
+		</div>
+
+
+	</section>
+
+	<section class="riso2">
+		<div class="wrapper">
+
+		    <div id="risoBox2" class="risoBox2">
+				<svg id = "graphic2" viewBox="-2.5 -2.5 300 199">
+					<defs>
+					  <filter id="blur" x="0" y="0">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+					  </filter>
+					  <radialGradient id="gradient2" cx="30%" cy="60%" r="90%" fx="10%" fy="80%">
+						<stop offset="0%" style="stop-color:#FFFFFF; stop-opacity:0" />
+						<stop id ="gradientColor2" offset="100%" style="stop-color:#f69d43; stop-opacity:0" />
+					  </radialGradient>
+					  <mask id="maskedtext">
+						<rect id ="inner" width="100%" height="100%" x="0" y="0" rx="15" fill="white"filter="url(#blur)"/>
+						<text id="today" x="48%" y="83%" text-anchor="middle" font-weight="bolder" font-size="230">
+						
+						</text>
+					  </mask>
+					</defs>
+					<!-- Shape -->
+					<rect width="100%" height="100%" x="0" y="0" rx="15" fill="url(#gradient2)"  mask="url(#maskedtext)"filter="url(#blur)"/>
+				  </svg>
+		    </div>
+
+		</div>
+	</section>
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
